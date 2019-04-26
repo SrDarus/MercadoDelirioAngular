@@ -1,0 +1,145 @@
+<!-- Cart -->
+<section class="cart bgwhite p-t-70 p-b-100">
+	<div class="container">
+		<!--Form-->
+		<div class="row">
+			<div class="col-12">
+				<form  #passengerForm="ngForm">
+				  <div class="row">
+				    <div class="col-md-4 col-sm-12">
+				    	<label for="nombre">Nombre completo</label>
+				      	<input 
+				      	type="text" 
+				      	[(ngModel)]="pago.nombre" 
+				      	id="nombre" 
+				      	name="nombre"
+				      	#nombre="ngModel" 
+				      	class="form-control border"  
+				      	placeholder="Ingrese el nombre"
+				      	required>
+				      	<div [hidden]="nombre.valid" class="small alert-danger">
+				        	Campo nombre es obligatorio
+				        </div>
+				    </div>
+				    <div class="col-md-4 col-sm-12">
+				    	<label for="email">Email</label>
+				      	<input 
+				      		type="email" 
+				      		[(ngModel)]="pago.email"  
+				      		id="email" 
+				      		name="email" 
+				      		#email="ngModel"
+				      		class="form-control border" 
+				      		placeholder="email@ejemplo.cl"
+				      		email>
+					      	<div [hidden]="email.valid"
+					             class="small alert-danger">
+					          Campo EMail es requerido
+					        </div>
+				      	<span class="help-block" *ngIf="email"></span>
+				    </div>
+				    <div class="col-md-4 col-sm-12">
+				    	<label for="direccion">Direccion</label>
+				      	<input 
+				      		type="direccion" 
+				      		[(ngModel)]="pago.direccion"  
+				      		id="direccion" 
+				      		name="direccion" 
+				      		#direccion="ngModel"
+				      		class="form-control border" 
+				      		placeholder="Avenida #111, comuna"
+				      		direccion>
+					      	<div [hidden]="direccion.valid"
+					             class="small alert-danger">
+					          La direccion es requerida
+					        </div>
+				      	<span class="help-block" *ngIf="email"></span>
+				    </div>
+				    <div class="col-md-12 col-sm-9 m-t-10">
+				    	<label for="txtObservacio">Observacion</label>
+				      	<textarea 
+				      		[(ngModel)]="pago.observacion"  
+				      		id="txtObsevacion" 
+				      		name="txtObsevacion"
+				      		class="form-control border" 
+				      		type="text">
+				      	</textarea> 
+				    </div>
+
+
+					<div class="col-md-4 offset-md-4 col-sm-12 m-t-10">
+						<!-- Button -->
+						<button 
+						class="flex-c-m sizefull bg1 bo-rad-23 s-text1" 
+						(click)="sendCarro()"
+						[disabled]="!passengerForm.form.valid"
+						[ngClass]="{'disabled': !passengerForm.form.valid, 'trans-0-4 hov1':passengerForm.form.valid}"> 
+							Pagar	
+						</button>
+					</div>
+				  </div>
+				</form>
+			</div>
+		</div>
+		<!-- Cart item -->
+		<div class="container-table-cart pos-relative">
+			<div class="wrap-table-shopping-cart bgwhite">
+				<table class="table-shopping-cart">
+					<tr class="table-head">
+						<th class="column-carro">#</th>
+						<th class="column-carro">Producto</th>
+						<th class="column-carro">Precio</th>
+						<th class="column-carro">Cantidad</th>
+						<th class="column-carro">SubTotal</th>
+						<th class="column-carro">Eliminar</th>
+					</tr>
+
+					<tr *ngFor="let item of carrList let i = index" class="table-row">
+						<td class="column-carro">
+							<span>{{i+1}}</span>
+						</td>
+						<td class="column-carro">
+							{{item.nombre}}
+						</td>
+						<td class="column-carro">
+							${{item.precio}}
+						</td>
+						<td class="column-carro">
+					          <div class="flex-w bo5 of-hidden w-size17 m-t-0 m-b-0">
+					            <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2" (click)="onChangeCantidadItem(item, 'r')">
+					              <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+					            </button>
+
+					            <input class="size8 m-text18 t-center num-product" type="number" min="0" name="num-product1" [(ngModel)]="item.cantidad">
+
+					            <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2" (click)="onChangeCantidadItem(item, 's')">
+					              <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+					            </button>
+					          </div>
+						</td>
+						<td class="column-carro">
+							${{item.cantidad * item.precio | number}}
+						</td>
+						<td>
+							<button class="btn btn-outline-danger float-center" (click)="rep.removeItem(item)">Quitar</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- Total -->
+		<div class="col-12 m-t-10 text-center">
+			<h5 class="m-text20 p-b-24">
+				Resumen compra
+			</h5>
+
+			<!--  -->
+			<div class="col-md-4 offset-md-4">
+				<span class="s-text18 w-size19 w-full-sm">
+					Total: ${{total}}
+				</span>
+			</div>
+		</div>
+	</div>
+</section>

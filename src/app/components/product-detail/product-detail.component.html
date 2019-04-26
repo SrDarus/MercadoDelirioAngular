@@ -1,0 +1,87 @@
+<div class="row" style="margin-top: 5%;">
+	<!--div class="col-md-2 col-sm-12">
+		<div class="img-thumbnail">
+			<img src="{{prodRepository.img2}}" width="100vw" height="100vh">
+		</div>
+	</div-->
+
+	<div class="col-md-9 col-sm-12 text-center">
+		<h4>{{prodRepository.nombre}}</h4>
+		<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">Fecha</th>
+			      <th scope="col">Cupos</th>
+			      <th scope="col">$ Adulto</th>
+			      <th scope="col">N° Adultos</th>
+			      <th scope="col">$ Niño</th>
+			      <th scope="col">N° Niños</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr *ngFor="let detPro of detailProduct">
+			      <td>{{detPro.fecha}}-{{detPro.jornada}}</td>
+			      <td>
+					<span *ngIf="detPro.capacidad.length>0 && detPro.disponible && detPro.capacidad.length>20"><fa class="fa-2x" name="check"></fa></span>
+					<span *ngIf="detPro.capacidad<1 || !detPro.disponible"><fa class="fa-2x" name="ban"></fa></span>
+					<span *ngIf="detPro.capacidad<=20 && detPro.disponible">{{detPro.cantidad.length}}</span>
+			      </td>
+			      <td>{{prodRepository.montoAdulto}}</td>
+			      <td>
+				      <select 
+				      	[(ngModel)]="detPro.cantidadAdultoSelected"  
+				      	(ngModelChange)="selectedCantidad(detPro)"
+				      	id="cbCantidad"
+				      	name="cbCantidad"  
+				      	class="form-control no-margin" 
+				      	[disabled]="detPro.capacidad<1 || !detPro.disponible">
+				      	<option
+				      		*ngFor="let op of detPro.capacidad" 
+				      		[value]="op">{{op}}
+				      	</option>
+				      </select>
+			      </td>
+			      <td>{{prodRepository.montoChild}}</td>
+			      <td>
+				      <select 
+				      	[(ngModel)]="detPro.cantidadNinoSelected" 
+				      	(ngModelChange)="selectedCantidad(detPro)" 
+				      	class="form-control no-margin"
+				      	[disabled]="detPro.cantidadAdultoSelected<1">
+				      	<option 
+				      		*ngFor="let op of detPro.capacidad; let i=index" 
+				      		[value]="op" 
+				      		[selected]="i==0">{{op}}
+				      	</option>
+				      </select>
+			      </td>
+			    </tr>
+			  </tbody>	
+		</table>
+	</div>
+
+	<div class="col-md-3 col-ms-12">
+		<div class="row">
+			<div class="col-12 btn-addToCar-detail">
+				<button 
+					class="flex-c-m sizefull bg1 bo-rad-23 s-text1" 
+					(click) = addItem() 
+					[disabled]="listProductDetail.length < 1" 
+					[ngClass]="{'disabled': listProductDetail.length < 1, 'trans-0-4 hov1':listProductDetail.length > 0}">
+					Agregar al carro
+				</button>	
+			</div>
+			<div class="col-md-12 ">
+				<h4 class="text-center">Política de menores</h4>
+				<h5 class="text-center">Excursiones Regulares:</h5>
+				<span>
+					<ul class="list-group">
+						<li class="list-group-item">Menores de 2 años: Liberados sin derecho asiento</li>
+						<li class="list-group-item">Hasta 12 años: pagan 65% de la tarifa</li>
+						<li class="list-group-item">Mayores de 12 años: 100% tarifa completa</li>
+					</ul>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

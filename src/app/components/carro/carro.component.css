@@ -1,0 +1,12 @@
+th,td, input, select{
+	font-size: 11px;
+}
+
+.column-carro{
+	text-align: center;
+
+}
+
+td{
+	padding: 1em;
+}

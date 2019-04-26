@@ -1,0 +1,54 @@
+.btn-addToCar-detail{
+	height: 5vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+}
+
+.table, select{
+	font-size: 11px;
+}
+
+
+/*
+select{
+    background: blue !important;
+    color:red !important;
+    text-shadow:0 1px 0 rgba(0,0,0,0.4);
+}
+option:not(:checked) { 
+    background-color: white; 
+    color:black !important;
+}
+*/
+
+
+
+
+
+/*
+@media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+       tr:nth-of-type(2n) {
+           background-color: inherit;
+       }
+       tr td:first-child {
+           background: #f0f0f0;
+           font-weight:bold;
+           font-size:1.3em;
+       }
+       tbody td {
+           display: block;
+           text-align:center;
+       }
+       tbody td:before {
+           content: attr(data-th);
+           display: block;
+           text-align:center;
+       }
+}
+*/

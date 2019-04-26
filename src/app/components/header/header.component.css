@@ -1,0 +1,51 @@
+header{
+	border-bottom: groove;
+}
+
+/*
+#resumenCarro{
+	position: fixed;
+	width: 90vh;
+	height: 85vh;
+	margin-left: 50%;
+	margin-top: 1%;
+	background: #fff;
+	border-radius: 5px;
+	border: groove;
+	overflow-y:scroll;
+	z-index: 998;
+}*/
+
+#btnCarro{
+	position: fixed;
+	background-color: #fff;
+	margin-left: 90%;
+	z-index: 999;
+}
+
+#carroCarro:active{
+	border: 1px black solid;
+}
+
+/*
+@media (max-width: 991.98px) {
+
+	#resumenCarro{
+		margin-left: 0;
+		width: 50vh;
+	}
+
+	#carro{
+		margin-left: 70%;
+	}
+}*/
+
+
+
+.modal.fade:not(.in).right .modal-dialog {
+    -webkit-transform: translate3d(55%, 0, 0);
+    transform: translate3d(55%, 0, 0);
+}
+
+
+

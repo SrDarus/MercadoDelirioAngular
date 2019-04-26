@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~nouislider/distribute/nouislider.min.css";
+
+router-outlet ~ * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.disabled{
+	opacity: 0.5;
+
+}
+
+.no-margin{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+
+
