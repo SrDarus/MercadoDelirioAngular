@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Producto} from '../models/Producto';
+import { Categoria} from '../models/categoria';
 import { GlobalService } from './global.service';
 
 @Injectable()
@@ -7,6 +8,7 @@ export class RepositoryService {
 
     constructor(public global:GlobalService){}
     private _carro:any[] = [];
+    private _categoria:Categoria = new Categoria(0,"",""); 
     private _product:Producto = new Producto(0,0,"","",0,0,"",""); 
     private _total:number = 0;
     private _div:number = 0;
@@ -26,8 +28,14 @@ export class RepositoryService {
 
     setProduct(product){
         this._product = product;
+    }
 
-        console.log(this.product)
+    setCategoria(objeto){
+      this._categoria = objeto
+    }
+    
+    get categoria(){
+        return this._categoria;
     }
 
 
@@ -121,13 +129,7 @@ export class RepositoryService {
         return this._total
     }
 
-    setDiv(div:number){
-      this._div = div;
 
-    }
-    getDiv(){
-        return this._div;
-    }
 
 }
 

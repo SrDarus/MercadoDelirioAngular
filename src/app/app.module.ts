@@ -23,8 +23,8 @@ import { PurchaseConfirmationSpanishComponent } from './components/purchase-conf
 import { PurchaseConfirmationEnglishComponent } from './components/purchase-confirmation/purchase-confirmation-english/purchase-confirmation-english.component';
 import { PurchaseConfirmationPortugueseComponent } from './components/purchase-confirmation/purchase-confirmation-portuguese/purchase-confirmation-portuguese.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { AdminAddComponent } from './components/admin-add/admin-add.component';
-import { AdminUpdateComponent } from './components/admin-update/admin-update.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+import { ProductosComponent } from './components/productos/productos.component';
 
 
 const appRoutes: Routes = [
@@ -34,9 +34,10 @@ const appRoutes: Routes = [
   { path: 'detail',      component: ProductDetailComponent },
   { path: 'carro',      component: CarroComponent },
   { path: 'admin',      component: AdminComponent },
-  { path: 'admin-add',      component: AdminAddComponent },
+  { path: 'categorias',      component: CategoriasComponent },
+  { path: 'productos',      component: ProductosComponent },
   { path: '',
-    redirectTo: '/mian',
+    redirectTo: '/main',
     pathMatch: 'full'
   },
   { path: '**', component: MainComponent }
@@ -54,8 +55,8 @@ const appRoutes: Routes = [
     PurchaseConfirmationEnglishComponent,
     PurchaseConfirmationPortugueseComponent,
     AdminComponent,
-    AdminAddComponent,
-    AdminUpdateComponent
+    CategoriasComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,

@@ -22,8 +22,7 @@
                   <option *ngFor="let filter of selectFilter" [ngValue]="filter">{{filter.nombre}}</option>
                 </select>-->
                 <input class="btnHeader m-l-5 b-r-5" type="text"  placeholder="Buscar">
-                <button routerLink="/admin-add"
-                  (click)="sendDiv(1)"
+                <button routerLink="/categorias"
                   style="border:1px solid;"
                   class="btn btn-header m-t-5 m-l-10 m-b-15">
                   <i class="fas fa-plus-square"></i>
@@ -45,7 +44,7 @@
                               <td>{{categoria.idCategoria}}</td>
                               <td>{{categoria.nombre}}</td>
                               <td>{{categoria.descripcion}}</td>
-                              <td><button style="cursor:pointer; width: 38px"><i class="fas fa-edit"></i></button></td>
+                              <td><button style="cursor:pointer; width: 38px" (click)="sendCategoria(categoria)"><i class="fas fa-edit"></i></button></td>
                               <td><button style="cursor:pointer" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash"></i></button></td>
                           </tr>
                       </tbody>
@@ -60,8 +59,7 @@
               <option *ngFor="let filter of selectFilter" [ngValue]="filter">{{filter.nombre}}</option>
             </select>-->
             <input class="btnHeader m-l-5 b-r-5" type="text"  placeholder="Buscar">
-            <button routerLink="/admin-add"
-              (click)="sendDiv(2)"
+            <button routerLink="/productos"
               style="border:1px solid;"
               class="btn btn-header m-t-5 m-l-10 m-b-15">
               <i class="fas fa-plus-square"></i>
@@ -91,7 +89,7 @@
                           <td>{{product.tipoUnidad}}</td>
                           <td>{{product.img}}</td>
                           <td>{{product.idCategoria}}</td>
-                          <td><button style="cursor:pointer; width: 38px"><i class="fas fa-edit"></i></button></td>
+                          <td><button style="cursor:pointer; width: 38px" (click)="sendProducto(product)"><i class="fas fa-edit"></i></button></td>
                           <td><button style="cursor:pointer" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash"></i></button></td>
                       </tr>
                   </tbody>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RepositoryService } from '../../services/repository.service';
 import { ProductService } from '../../services/product.service';
 import { GlobalService } from '../../services/global.service';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -45,8 +46,12 @@ export class AdminComponent implements OnInit {
   });
   }
 
-  sendDiv(div:number){
-    console.log(div)
-    this.rep.setDiv(div)
+  sendCategoria(objeto){
+    this.rep.setCategoria(objeto)
+    this.router.navigate(['/categorias'])
+  }
+  sendProducto(objeto){
+    this.rep.setProduct(objeto)
+    this.router.navigate(['/productos'])
   }
 }
