@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
 	carrList:any;
     contador:number;
     total:number;
+
+    btnAdmin:boolean;
+
 	@ViewChild('resumenCarro') resumenCarro: ElementRef;
     @ViewChild('myModal') myModal: ElementRef;
     

@@ -11,7 +11,7 @@ export class RepositoryService {
     private _categoria:Categoria = new Categoria(0,"",""); 
     private _product:Producto = new Producto(0,0,"","",0,0,"",""); 
     private _total:number = 0;
-    private _div:number = 0;
+    private _btnAdmin:number = 0;
     activeCartNotify:boolean = false;
     //contador:number = 0;
     get product(){
@@ -36,6 +36,14 @@ export class RepositoryService {
     
     get categoria(){
         return this._categoria;
+    }
+
+    setAdmin(value){
+        this._btnAdmin = value
+        console.log(this._btnAdmin);
+    }
+    get admin(){
+        return this._btnAdmin;
     }
 
 
@@ -127,6 +135,11 @@ export class RepositoryService {
             }
         }
         return this._total
+    }
+
+    limpiaRep(){
+        this._categoria  = new Categoria(0,"","");
+        this._product = new Producto(0,0,"","",0,0,"","");
     }
 
 

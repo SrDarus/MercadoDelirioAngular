@@ -54,4 +54,8 @@ export class AdminComponent implements OnInit {
     this.rep.setProduct(objeto)
     this.router.navigate(['/productos'])
   }
+
+  limpiaRep(){
+    this.rep.limpiaRep()
+  }
 }

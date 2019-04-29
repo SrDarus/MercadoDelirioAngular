@@ -14,10 +14,13 @@
           <a class="nav-link" [routerLink]="'/main'"><fa class="fa-1x" name="home"></fa> Home</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link"  [routerLink]="'/carro'"><fa class="fa-1x" name="shopping-cart"></fa>Carro</a>
+          <a class="nav-link"  [routerLink]="'/carro'"><fa class="fa-1x" name="shopping-cart"></fa> Carro</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link"  [routerLink]="'/carro'"><fa class="fa-1x" name="dollar"></fa>{{rep.total | number}}</a>
+        </li>
+        <li *ngIf="rep.admin==1" class="nav-item active">
+        <a class="nav-link" routerLink="/admin"><i class="far fa-user"></i> Administrador</a>
         </li>
       </ul>
     </div>
