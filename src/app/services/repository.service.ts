@@ -9,6 +9,7 @@ export class RepositoryService {
     private _carro:any[] = [];
     private _product:Producto = new Producto(0,0,"","",0,0,"",""); 
     private _total:number = 0;
+    private _div:number = 0;
     activeCartNotify:boolean = false;
     //contador:number = 0;
     get product(){
@@ -120,6 +121,13 @@ export class RepositoryService {
         return this._total
     }
 
+    setDiv(div:number){
+      this._div = div;
+
+    }
+    getDiv(){
+        return this._div;
+    }
 
 }
 

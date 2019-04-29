@@ -11,11 +11,15 @@
           </li>
         </ul>
   </nav>
+  
   <div class="col-sm-6 col-md-8 col-lg-9 no-margin">
     <article class="" style="border:1px black solid; height:20vh" >
       <img class="sizefull" [src]="'/assets/images/test/720x539.jpg'" >
     </article>
 
+    <a routerLink="/admin" class="block2-name dis-block s-text3 p-b-5">
+      Administrador
+    </a>
     <article class="text-center" style="border: 1px blue solid">
       <!-- Products -->
       <div class="row">
@@ -39,7 +43,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="block2-txt p-t-20">
                 <a routerLink="/detail" (click)="addItem(product)" class="block2-name dis-block s-text3 p-b-5">
                   {{product.nombre}}

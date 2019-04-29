@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div *ngIf="divCategoriaForm" class="row">
+    <div class="col-12">
+      <h3 class="text-center"> Agregar Categoría</h3>
+    </div>
+    <div class="col-12 mt-5">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">idCategoria</label>
+            <input type="text" [ngModel]= "txtIdCategoria"  class="form-control" id="exampleFormControlInput1" disabled>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Nombre</label>
+            <input type="text" [ngModel]= "txtNombre" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese un nombre" >
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripcion</label>
+            <textarea class="form-control" [ngModel]= "txtDescripcion" id="exampleFormControlTextarea1" rows="3" placeholder="Ingrese una descripcion"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="button"  class="form-control btn btn-block btn-outline-dark" id="exampleFormControlInput1" >Agregar</button>
+          </div>
+    </div>  
+  </div>
+  
+  <div *ngIf="divProductoForm" class="row">
+      <div class="col-12">
+        <h3 class="text-center"> Agregar Producto</h3>
+      </div>
+      <div class="col-12 mt-5">
+        <form>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">idProducto</label>
+              <input type="text"  class="form-control" id="exampleFormControlInput1" disabled>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Nombre</label>
+              <input type="text"  class="form-control" id="exampleFormControlInput1" placeholder="Ingrese un nombre" >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Precio</label>
+              <input type="number"  class="form-control" id="exampleFormControlInput1" placeholder="Ingrese precio">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Unidad</label>
+              <input type="number"  class="form-control" id="exampleFormControlInput1" placeholder="Ingrese una unidad" >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">TipoUnidad</label>
+              <input type="text"  class="form-control" id="exampleFormControlInput1" placeholder="Ingrese tipo de unidad">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Img</label>
+              <input type="text"  class="form-control" id="exampleFormControlInput1" placeholder="Ingrese ruta imagen" >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">idCategoria</label>
+              <input type="number"  class="form-control" id="exampleFormControlInput1" >
+            </div>
+            <div class="form-group">
+              <button type="button"  class="form-control btn btn-block btn-outline-dark" id="exampleFormControlInput1" >Agregar</button>
+            </div>
+        </form>
+      </div>  
+    </div>
+</div>  

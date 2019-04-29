@@ -22,6 +22,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { PurchaseConfirmationSpanishComponent } from './components/purchase-confirmation/purchase-confirmation-spanish/purchase-confirmation-spanish.component';
 import { PurchaseConfirmationEnglishComponent } from './components/purchase-confirmation/purchase-confirmation-english/purchase-confirmation-english.component';
 import { PurchaseConfirmationPortugueseComponent } from './components/purchase-confirmation/purchase-confirmation-portuguese/purchase-confirmation-portuguese.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminAddComponent } from './components/admin-add/admin-add.component';
+import { AdminUpdateComponent } from './components/admin-update/admin-update.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +33,8 @@ const appRoutes: Routes = [
   { path: 'main',      component: MainComponent },
   { path: 'detail',      component: ProductDetailComponent },
   { path: 'carro',      component: CarroComponent },
+  { path: 'admin',      component: AdminComponent },
+  { path: 'admin-add',      component: AdminAddComponent },
   { path: '',
     redirectTo: '/mian',
     pathMatch: 'full'
@@ -47,7 +52,10 @@ const appRoutes: Routes = [
     LoginComponent,
     PurchaseConfirmationSpanishComponent,
     PurchaseConfirmationEnglishComponent,
-    PurchaseConfirmationPortugueseComponent
+    PurchaseConfirmationPortugueseComponent,
+    AdminComponent,
+    AdminAddComponent,
+    AdminUpdateComponent
   ],
   imports: [
     BrowserModule,
