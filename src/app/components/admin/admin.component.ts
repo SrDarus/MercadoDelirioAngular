@@ -14,6 +14,9 @@ export class AdminComponent implements OnInit {
   _products:any = null;
   divCategoria:boolean=true;
   divProducto:boolean = false;
+  divReporte:boolean = false;
+  reporte:any={totalVentas:162500, productoMasVendido: "Lechuga"};
+  fechaReporte = "02/05/2019";
   constructor( private rep: RepositoryService, 
     private prodService: ProductService,
     public global: GlobalService, 
@@ -27,6 +30,7 @@ export class AdminComponent implements OnInit {
   getCategorias(){
     this.divCategoria = true;
     this.divProducto = false;
+    this.divReporte = false;
     this.prodService.getCategorias().subscribe((resp)=>{
       if(resp.Status_messaje = 'Categorias encontradas')
       {
@@ -38,12 +42,19 @@ export class AdminComponent implements OnInit {
   getProductos(){
     this.divCategoria = false;
     this.divProducto = true;
+    this.divReporte = false;
     this.prodService.getAllProducts().subscribe((resp)=>{
       if(resp.Status_messaje = 'Productos encontrados')
       {
           this._products = resp.Data;
       }
   });
+  }
+
+  getReporte(){
+    this.divCategoria = false;
+    this.divProducto = false;
+    this.divReporte = true;
   }
 
   sendCategoria(objeto){
@@ -54,8 +65,10 @@ export class AdminComponent implements OnInit {
     this.rep.setProduct(objeto)
     this.router.navigate(['/productos'])
   }
+  
 
   limpiaRep(){
     this.rep.limpiaRep()
   }
+  
 }

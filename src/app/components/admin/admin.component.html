@@ -9,7 +9,10 @@
             Categorias
           </li>
           <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getProductos()" >
-              Productos
+            Productos
+          </li>
+          <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getReporte()" >
+            Reporte
           </li>
         </ul>
   </nav>
@@ -96,6 +99,29 @@
                       </tr>
                   </tbody>
               </table>
+      </div>
+</div>
+<div *ngIf="divReporte" class="row col-sm-6 col-md-8 col-lg-9 no-margin">
+      <div class="col-md-12">
+        <h1 class="text-center">Reporte Ventas </h1>
+      </div>  
+      <div class="mandate col-md-12">
+        <table class="table table-sm table-hover mt-3">
+            <tbody>
+                <tr>
+                    <td><b>Fecha</b></td>
+                    <td><b>{{fechaReporte}}</b></td>
+                  </tr>
+                <tr>
+                  <td>Total Venta Diaria</td>
+                  <td>{{reporte.totalVentas}}</td>
+                </tr>
+                <tr>
+                  <td>Producto mas Vendido</td>
+                  <td>{{reporte.productoMasVendido}}</td>
+                </tr>
+            </tbody>
+        </table>
       </div>
 </div>
 </section>
