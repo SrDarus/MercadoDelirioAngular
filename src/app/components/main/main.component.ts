@@ -37,10 +37,10 @@ export class MainComponent implements OnInit {
 
 
     ngOnInit() { 
-        //this.router.navigate(['/main']);
-        let user=1
-        this.rep.setAdmin(user);
+        //Hay que parametrizar
+        //this.rep.admin
         this.rep.activeCartNotify = false;
+
 
 	    this.prodService.getCategorias().subscribe((resp)=>{
             if(resp.Status_messaje = 'Categorias encontradas')

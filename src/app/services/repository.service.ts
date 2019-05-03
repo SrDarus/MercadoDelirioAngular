@@ -11,7 +11,8 @@ export class RepositoryService {
     private _categoria:Categoria = new Categoria(0,"",""); 
     private _product:Producto = new Producto(0,0,"","",0,0,"",""); 
     private _total:number = 0;
-    private _btnAdmin:number = 0;
+    private _admin:number = 0;
+    private _perfil:number = 0;
     activeCartNotify:boolean = false;
     //contador:number = 0;
     get product(){
@@ -39,12 +40,18 @@ export class RepositoryService {
     }
 
     setAdmin(value){
-        this._btnAdmin = value
-        console.log(this._btnAdmin);
+        this._admin = value;
     }
     get admin(){
-        return this._btnAdmin;
+        return this._admin;
     }
+    setPerfil(value){
+        this._perfil = value;
+    }
+    get perfil(){
+        return this._perfil;
+    }
+
 
 
     addItem(product, action){
@@ -141,7 +148,12 @@ export class RepositoryService {
         this._categoria  = new Categoria(0,"","");
         this._product = new Producto(0,0,"","",0,0,"","");
     }
-
+    cerrarSesion(){
+        this._admin = 0;
+        this._perfil = 0;
+        this._categoria  = new Categoria(0,"","");
+        this._product = new Producto(0,0,"","",0,0,"","");
+    }
 
 
 }

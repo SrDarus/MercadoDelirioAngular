@@ -24,6 +24,7 @@ export class CategoriasComponent implements OnInit {
 
   ngOnInit() {
     this._categorias = this.rep.categoria
+    
     this.txtIdCategoria = this._categorias.idCategoria;
     this.txtNombre = this._categorias.nombre;
     this.txtDescripcion = this._categorias.descripcion;
