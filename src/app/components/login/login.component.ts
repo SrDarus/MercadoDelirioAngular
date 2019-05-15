@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProductService } from '../../services/product.service';
+import { GenericoService } from '../../services/generico.service';
 import { RepositoryService } from '../../services/repository.service';
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   private _validate:boolean=false;
 
     constructor( 
-      private prodService:ProductService,
+      private genericoService:GenericoService,
       private route:Router,
       private rep: RepositoryService) { }
   
@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
     }
   
     login(){
-      this.prodService.login(this.txtUsuario, this.txtPassword).subscribe((resp)=>{
+      this.genericoService.login(this.txtUsuario, this.txtPassword).subscribe((resp)=>{
         console.log(resp)
         if(resp.Status_messaje==='Usuario encontrado'){
           this._usuario = resp.Data;
           sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
           console.log(resp.Data)
-          if(resp.Data.perfil == 1){
+          if(resp.Data.IdPerfil == 1){
             this.rep.setAdmin(1)
           }
-          this.rep.setPerfil(resp.Data.perfil)
+          this.rep.setPerfil(resp.Data.IdPerfil)
           this.route.navigate(['/main'])
         }else{
           alert("usuario o password incorrecto")

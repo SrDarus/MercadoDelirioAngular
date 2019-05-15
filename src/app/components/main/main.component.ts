@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { RepositoryService } from '../../services/repository.service';
+import { CategoriaService } from '../../services/categoria.service';
 import { ProductService } from '../../services/product.service';
 import { GlobalService } from '../../services/global.service';
 
@@ -15,22 +16,23 @@ import { GlobalService } from '../../services/global.service';
 export class MainComponent implements OnInit {
 
     _categorias:any=null;
-    _products:any = null; 
-    //listProduct:any[] = [];
+    _listProducts:any = null; 
+    _products:any[] = [];
 
     filteredProducts:any = null;
     filteredProductsByZona:any = null;
 
-    zonas:string[] = [];
-    zonaSelected:string;
+    //zonas:string[] = [];
+    //zonaSelected:string;
 
     min:number=0;
     max:number=1000000;
 	rangeModel:any[]=[0,100];
 
-    constructor( private rep: RepositoryService, 
+    constructor( private rep: RepositoryService,  
+    	private categService: CategoriaService,
     	private prodService: ProductService,
-            public global: GlobalService, 
+        public global: GlobalService, 
 		public cd: ChangeDetectorRef,
         private router: Router) { }
 
@@ -42,7 +44,7 @@ export class MainComponent implements OnInit {
         this.rep.activeCartNotify = false;
 
 
-	    this.prodService.getCategorias().subscribe((resp)=>{
+	    this.categService.getCategorias().subscribe((resp)=>{
             if(resp.Status_messaje = 'Categorias encontradas')
             {
 	    	    this._categorias = resp.Data;
@@ -51,8 +53,8 @@ export class MainComponent implements OnInit {
 
 	    	//console.log("this.filteredProducts", this.filteredProducts)
 	
-	    	//for(let i = 0;i<this._products.length; i++){
-		    //	this._products.img = 'assets/images/'+this._products[i].img
+	    	//for(let i = 0;i<this._listProducts.length; i++){
+		    //	this._listProducts.Img = 'assets/images/'+this._listProducts[i].Img
 	    	//}
 
         });
@@ -60,18 +62,19 @@ export class MainComponent implements OnInit {
         this.prodService.getAllProducts().subscribe((resp)=>{
             if(resp.Status_messaje = 'Productos encontrados')
             {
-                this._products = resp.Data;
-                for(let i = 0;i<this._products.length; i++){
-                    let urlImg = 'assets/images/products/'+this.products[i].img
-                    this.products[i].img = urlImg
+                this._listProducts = resp.Data;
+                console.log("this._listProducts", this._listProducts)
+                for(let i = 0;i<this._listProducts.length; i++){
+                    let urlImg = 'assets/images/products/'+this._listProducts[i].Img
+                    this._listProducts[i].Img = urlImg
+                    console.log(this._listProducts[0].Img);
                 }
-                //console.log(this._categorias);
             }
 
             //console.log("this.filteredProducts", this.filteredProducts)
     
-            //for(let i = 0;i<this._products.length; i++){
-            //    this._products.img = 'assets/images/'+this._products[i].img
+            //for(let i = 0;i<this._listProducts.length; i++){
+            //    this._listProducts.Img = 'assets/images/'+this._listProducts[i].Img
             //}
 
         });
@@ -80,10 +83,10 @@ export class MainComponent implements OnInit {
     }
 
     get products(){
-        return this._products;
+        return this._listProducts;
     }
 
-    get getCategorias(){
+    get categorias(){
         return this._categorias;
     }
 
@@ -101,10 +104,10 @@ export class MainComponent implements OnInit {
         //console.log(prod)
         this.prodService.getProducts(prod.idCategoria).subscribe((resp)=>{
             
-            this._products = resp.Data;
-            for(let i = 0;i<this._products.length; i++){
-                let urlImg = 'assets/images/products/'+this.products[i].img
-                this.products[i].img = urlImg
+            this._listProducts = resp.Data;
+            for(let i = 0;i<this._listProducts.length; i++){
+                let urlImg = 'assets/images/products/'+this.products[i].Img
+                this.products[i].Img = urlImg
             }
 
         });
@@ -122,7 +125,7 @@ export class MainComponent implements OnInit {
 		let newFilteredProducts:any = []
 		for(let i=0; i<this.filteredProductsByZona.length; i++){
 			if(this.filteredProductsByZona[i].montoAdulto >= this.rangeModel[0] && this.filteredProductsByZona[i].montoAdulto <= this.rangeModel[1] ){
-				newFilteredProducts.push(this._products[i]);
+				newFilteredProducts.push(this._listProducts[i]);
 			}
 		}
     	this.filteredProducts = newFilteredProducts;
@@ -156,7 +159,7 @@ export class MainComponent implements OnInit {
                 let newProduct  = {
                     idProducto: product.idProducto,
                     nombre:product.nombre,
-                    img: product.img,
+                    Img: product.Img,
                     precio: product.precio,
                     cantidad: 1
                 }
@@ -168,7 +171,7 @@ export class MainComponent implements OnInit {
             let newProduct  = {
                 idProducto: product.idProducto,
                 nombre:product.nombre,
-                img: product.img,
+                Img: product.Img,
                 precio: product.precio,
                 cantidad: 1
             } 
@@ -179,7 +182,7 @@ export class MainComponent implements OnInit {
           let newProduct  = {
             idProducto: product.idProducto,
             nombre:product.nombre,
-            img: product.img,
+            Img: product.Img,
             precio: product.precio,
             cantidad: this.listProduct[i].cantidad,
           } 

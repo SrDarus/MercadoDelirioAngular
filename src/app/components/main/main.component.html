@@ -5,7 +5,7 @@
           Categor&iacute;as
         </h4>
 
-        <ul *ngFor="let categ of getCategorias" class="list-group p-b-5">
+        <ul *ngFor="let categ of categorias" class="list-group p-b-5">
           <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getProducts(categ)">
             {{categ.nombre}}
           </li>
@@ -55,13 +55,13 @@
             <!-- Block2 -->
             <div class="block2">
               <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                <img src="{{product.img}}" alt="IMG-PRODUCT">
+                <img src="{{product.Img}}" alt="IMG-PRODUCT">
 
                 <div class="block2-overlay trans-0-4">
-                  <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                  <!--a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                     <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                     <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                  </a>
+                  </a-->
 
                   <div class="block2-btn-addcart w-size1 trans-0-4">
                     <!-- Button -->
@@ -73,11 +73,11 @@
               </div>
               <div class="block2-txt p-t-20">
                 <a routerLink="/detail" (click)="addItem(product)" class="block2-name dis-block s-text3 p-b-5">
-                  {{product.nombre}}
+                  {{product.Nombre}}
                 </a>
 
                 <span class="block2-price m-text6 p-r-5">
-                  ${{product.precio | number}} 
+                  ${{product.Precio | number}} 
                 </span>
               </div>
             </div>

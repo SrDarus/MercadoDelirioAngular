@@ -11,11 +11,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CarroComponent } from './components/carro/carro.component';
+
 //SERVICES
 import { RepositoryService } from './services/repository.service';
+import { ProductosComponent } from './components/productos/productos.component';
 import { ProductService } from './services/product.service';
+import { CategoriaService } from './services/categoria.service';
 import { GlobalService } from './services/global.service';
 import { LoginComponent } from './components/login/login.component';
+
 //LIBRERIAS
 import { NouisliderModule } from 'ng2-nouislider';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -24,7 +28,7 @@ import { PurchaseConfirmationEnglishComponent } from './components/purchase-conf
 import { PurchaseConfirmationPortugueseComponent } from './components/purchase-confirmation/purchase-confirmation-portuguese/purchase-confirmation-portuguese.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
-import { ProductosComponent } from './components/productos/productos.component';
+import { GenericoService } from './services/generico.service';
 
 
 const appRoutes: Routes = [
@@ -69,7 +73,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     RepositoryService,
+    GenericoService,
     ProductService,
+    CategoriaService,
     GlobalService,
     DatePipe
   ],

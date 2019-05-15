@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { RepositoryService } from '../../services/repository.service';
+import { CategoriaService } from '../../services/categoria.service';
 import { ProductService } from '../../services/product.service';
 import { GlobalService } from '../../services/global.service';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -17,7 +18,8 @@ export class AdminComponent implements OnInit {
   divReporte:boolean = false;
   reporte:any={totalVentas:162500, productoMasVendido: "Lechuga"};
   fechaReporte = "02/05/2019";
-  constructor( private rep: RepositoryService, 
+  constructor( private rep: RepositoryService,
+    private categoriaService: CategoriaService, 
     private prodService: ProductService,
     public global: GlobalService, 
     public cd: ChangeDetectorRef,
@@ -31,7 +33,7 @@ export class AdminComponent implements OnInit {
     this.divCategoria = true;
     this.divProducto = false;
     this.divReporte = false;
-    this.prodService.getCategorias().subscribe((resp)=>{
+    this.categoriaService.getCategorias().subscribe((resp)=>{
       if(resp.Status_messaje = 'Categorias encontradas')
       {
       this._categorias = resp.Data;

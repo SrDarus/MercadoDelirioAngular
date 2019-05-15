@@ -12,16 +12,6 @@ export class ProductService {
 
     constructor( private http:HttpClient) { }
 
-    login(_usuario:string, _password:string){
-        let metodo:string = "Login.php?email="+_usuario+"&password="+_password;
-        return this.http.get<any>(this.url+metodo);
-    }
-
-    getCategorias():Observable<any>{
-    	let metodo:string = "getCategorias.php";
-    	return this.http.get<any>(this.url+metodo);
-    }
-
     getAllProducts():Observable<any>{
       let metodo:string = "getAllProducts.php";
       return this.http.get<any>(this.url+metodo);
@@ -37,13 +27,7 @@ export class ProductService {
     	return this.http.get<any>(this.url+metodo);
     }
 
-    enviarReserva(_reserva){
-      let _Id = '1';
-      //let urlApi = this.url+"Ticket/abordarPasajero?nombrePasajero="+_nombrePasajero+"&email="+_email+"&habitacion="+_habitacion+"&observacion="+_observacion;
-      let urlApi = this.url+"enviarReserva?reserva="+_reserva;
-      //return this.http.post(urlApi,{nombrePasajero: _nombrePasajero,email:_email,habitacion: _habitacion,observacion:_observacion});
-      return this.http.post(urlApi,{Id: _Id});
-    }
+    
 
 
 
