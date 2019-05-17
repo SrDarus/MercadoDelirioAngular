@@ -31,8 +31,8 @@ export class RepositoryService {
         this._product = product;
     }
 
-    setCategoria(objeto){
-      this._categoria = objeto
+    setCategoria(categoria){
+      this._categoria = categoria
     }
     
     get categoria(){
@@ -42,29 +42,33 @@ export class RepositoryService {
     setAdmin(value){
         this._admin = value;
     }
+
     get admin(){
         return this._admin;
     }
+
     setPerfil(value){
         this._perfil = value;
     }
+
     get perfil(){
         return this._perfil;
     }
 
-
+    get catetoria(){
+        return this._categoria;
+    }
 
     addItem(product, action){
         if(action === 0){
-            this._carro.push(product);
-
+            this._carro.push(product)
         }else{
             let i = this._carro.indexOf(product);
             this._carro[i].cantidad +=1
         }
         this.global.countProduct = this._carro.length
         //this.calcular_Total()
-        this.activeCartNotify = true;
+        this.activeCartNotify = true
         this.calcularTotal()
 
     }

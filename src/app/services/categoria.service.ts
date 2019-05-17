@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -16,8 +17,21 @@ export class CategoriaService {
     return this.http.get<any>(this.url+metodo);
   }
 
-  insertCategoria(_nombre, _descripcion):Observable<any>{
-    let metodo:string = "insertCategoria.php";
-    return this.http.post(this.url+metodo,{Nombre: _nombre, Descripcion: _descripcion});
+  grabarCategoria(_nombre, _descripcion):Observable<any>{
+
+  	//console.log(_nombre+_descripcion)
+  	let httpHeaders = new HttpHeaders({
+  		//'Access-Control-Allow-Origin': 'http://localhost:4200/',
+		//'Access-Control-Allow-Methods' : 'POST',
+        //'Content-Type' : 'application/json',
+        //'Cache-Control': 'no-cache',
+	}); 
+
+	let options = {
+	     headers: httpHeaders
+	}; 
+
+    let metodo:string = "insertCategoria.php?nombre="+_nombre+"&descripcion="+_descripcion;
+    return this.http.post(this.url+metodo,{nombre: _nombre, descripcion: _descripcion});
   }
 }

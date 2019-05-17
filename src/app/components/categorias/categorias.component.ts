@@ -1,8 +1,14 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+//model
+import { Categoria } from '../../models/categoria'
+
+//services
 import { RepositoryService } from '../../services/repository.service';
-import { ProductService } from '../../services/product.service';
-import { GlobalService } from '../../services/global.service';
+import { CategoriaService } from '../../services/categoria.service';
+
+
 
 @Component({
   selector: 'app-categorias',
@@ -10,25 +16,45 @@ import { GlobalService } from '../../services/global.service';
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent implements OnInit {
-  private txtIdCategoria:number;
-  private txtNombre:string;
-  private txtDescripcion:string;
 
-  private _categorias:any;
+  /*private categoria = [
+  { idCategoria:0  },
+  { nombre:""},
+  { descripcion:""},
+  ];*/
 
-  constructor( private rep: RepositoryService, 
-    private prodService: ProductService,
-    public global: GlobalService, 
-    public cd: ChangeDetectorRef,
+  txtAviso:String;
+  actionAviso:boolean;
+
+
+  private _categoria:Categoria = new Categoria(0,' ',' ');
+test:string = "atest"
+  constructor( private rep: RepositoryService,
+               private servCategoria: CategoriaService,
     private router: Router) { }
 
   ngOnInit() {
-    this._categorias = this.rep.categoria
-    
-    this.txtIdCategoria = this._categorias.idCategoria;
-    this.txtNombre = this._categorias.nombre;
-    this.txtDescripcion = this._categorias.descripcion;
-    
-
+    this._categoria = this.rep.categoria;
+    this.actionAviso = false;
+    //console.log(this._categoria)
   }
+
+  get categoria(){
+    return this._categoria
+  }
+
+  grabarCategoria(){
+
+    this.servCategoria.grabarCategoria(this.categoria.nombre, this.categoria.descripcion)
+    .subscribe((resp)=>{
+
+      if(resp>0){
+        this.actionAviso = true;
+        this.txtAviso = "Registrado correctamente";
+      }
+
+      console.log(resp)
+    });
+  }
+
 }

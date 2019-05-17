@@ -11,7 +11,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CarroComponent } from './components/carro/carro.component';
-
 //SERVICES
 import { RepositoryService } from './services/repository.service';
 import { ProductosComponent } from './components/productos/productos.component';

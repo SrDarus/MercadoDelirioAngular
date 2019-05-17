@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+
+//services
 import { RepositoryService } from '../../services/repository.service';
 import { CategoriaService } from '../../services/categoria.service';
 import { ProductService } from '../../services/product.service';
-import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-admin',
@@ -21,7 +22,6 @@ export class AdminComponent implements OnInit {
   constructor( private rep: RepositoryService,
     private categoriaService: CategoriaService, 
     private prodService: ProductService,
-    public global: GlobalService, 
     public cd: ChangeDetectorRef,
     private router: Router) { }
 
@@ -59,15 +59,22 @@ export class AdminComponent implements OnInit {
     this.divReporte = true;
   }
 
-  sendCategoria(objeto){
-    this.rep.setCategoria(objeto)
+  sendCategoria(categoria){
+    this.rep.setCategoria(categoria)
     this.router.navigate(['/categorias'])
   }
+
   sendProducto(objeto){
     this.rep.setProduct(objeto)
     this.router.navigate(['/productos'])
   }
   
+  nuevaCategoria(){
+    let categoria = {idCategoria:0,nombre:'',descripcion:''};
+    this.rep.setCategoria(categoria);
+    this.router.navigate(['/categorias']);
+  }
+
 
   limpiaRep(){
     this.rep.limpiaRep()
