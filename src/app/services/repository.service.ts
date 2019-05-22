@@ -8,8 +8,8 @@ export class RepositoryService {
 
     constructor(public global:GlobalService){}
     private _carro:any[] = [];
-    private _tipoProducto:TipoProducto = new TipoProducto(0,""); 
-    private _product:Producto = new Producto(0,0,"","",0,0,"",""); 
+    private _tipoProducto:any;
+    private _product:any;
     private _total:number = 0;
     private _admin:number = 0;
     private _perfil:number = 0;
@@ -152,13 +152,13 @@ export class RepositoryService {
 
     limpiaRep(){
         this._tipoProducto  = new TipoProducto(0,"");
-        this._product = new Producto(0,0,"","",0,0,"","");
+        this._product = new Producto(0,0,"","",0,0,"",);
     }
     cerrarSesion(){
         this._admin = 0;
         this._perfil = 0;
         this._tipoProducto  = new TipoProducto(0,"");
-        this._product = new Producto(0,0,"","",0,0,"","");
+        this._product = new Producto(0,0,"","",0,0,"");
     }
 
 

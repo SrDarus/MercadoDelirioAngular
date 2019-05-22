@@ -44,7 +44,6 @@ export class TipoProductoComponent implements OnInit {
   }
 
   grabarTipoProducto(){
-    console.log(this.tipoProducto)
     if(this.tipoProducto.IdTipoProducto==0){
       this.servtipoProducto.grabarTipoProducto(this.tipoProducto.Nombre)
       .subscribe((resp)=>{
@@ -60,7 +59,6 @@ export class TipoProductoComponent implements OnInit {
         console.log(resp)
       });
     }else{
-      console.log(this.tipoProducto)
       this.servtipoProducto.updateTipoProducto(this.tipoProducto.IdTipoProducto, this.tipoProducto.Nombre)
       .subscribe((resp)=>{
         console.log(resp)

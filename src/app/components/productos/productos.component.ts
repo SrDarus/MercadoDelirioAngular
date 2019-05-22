@@ -10,31 +10,56 @@ import { GlobalService } from '../../services/global.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  private txtIdProducto:number;
-  private txtNombre:string;
-  private txtPrecio:number;
-  private txtUnidad:number;
-  private txtTipoUnidad:string;
-  private txtImg:string;
-  private txtIdCategoria:number;
+  txtAviso:String;
+  actionAviso:boolean;
 
-  private _productos:any;
 
-  constructor( private rep: RepositoryService, 
-    private prodService: ProductService,
-    public global: GlobalService, 
-    public cd: ChangeDetectorRef,
+  private _producto:any;//TipoProducto = new TipoProducto(0,'');
+  test:string = "atest"
+  constructor( private rep: RepositoryService,
+               private servProducto: ProductService,
     private router: Router) { }
 
   ngOnInit() {
-    this._productos = this.rep.product
-    this.txtIdProducto = this._productos.idProducto;
-    this.txtNombre = this._productos.nombre;
-    this.txtPrecio = this._productos.precio;
-    this.txtUnidad = this._productos.unidad;
-    this.txtTipoUnidad = this._productos.tipoUnidad;
-    this.txtImg = this._productos.img;
-    this.txtIdCategoria = this._productos.idCategoria;
+    this._producto = this.rep.product;
+    this.actionAviso = false;
+    console.log(this._producto)
+  }
 
+  get producto(){
+    return this._producto
+  }
+
+  grabarProducto(){
+    if(this.producto.IdProducto==0){
+      this.servProducto.grabarProducto(this.producto.IdTipoProducto,this.producto.IdUnidadMedida,this.producto.Nombre,this.producto.Precio,this.producto.Img)
+      .subscribe((resp)=>{
+
+        if(resp.Data>0){
+          this.router.navigate(['/admin'])
+          
+        }else{
+          this.actionAviso = true;
+          this.txtAviso = resp.Status_messaje;
+        }
+
+        console.log(resp)
+      });
+    }else{
+      this.servProducto.updateProducto(this.producto.IdProducto, this.producto.IdTipoProducto,this.producto.IdUnidadMedida, this.producto.Nombre, this.producto.Precio, this.producto.Img)
+      .subscribe((resp)=>{
+        console.log(resp)
+        if(resp.Status_messaje==0 ){
+          this.router.navigate(['admin']);
+        }else{
+          this.actionAviso = true;
+          this.txtAviso = "Problemas con el servidor";
+          this.txtAviso = resp.Status_messaje;
+        }
+      });
+    }
+
+
+    
   }
 }

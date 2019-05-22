@@ -27,6 +27,25 @@ export class ProductService {
     	return this.http.get<any>(this.url+metodo);
     }
 
+    grabarProducto(_idTipoProducto,_unidadMedida,_nombre,_precio,_img):Observable<any>{
+      
+      let metodo:string = "insertProducto.php?idTipoProducto="+_idTipoProducto+"&idUnidadMedida="+_unidadMedida+"&nombre="+_nombre+"&precio="+_precio+"&img="+_img;
+      return this.http.post(this.url+metodo,{id:_idTipoProducto,unidadMedida:_unidadMedida,nombre: _nombre,precio:_precio,img:_img});
+    }
+  
+    updateProducto(_id, _idTipoProducto,_unidadMedida,_nombre,_precio,_img):Observable<any>{
+  
+      let metodo:string = "updateProducto.php?id="+_id+"&idTipoProducto="+_idTipoProducto+"&idUnidadMedida="+_unidadMedida+"&nombre="+_nombre+"&precio="+_precio+"&img="+_img;
+      return this.http.post(this.url+metodo,{id: _id, idTipoProducto:_idTipoProducto, idUnidadMedida:_unidadMedida, nombre: _nombre, precio:_precio, img:_img});
+    }
+  
+    deleteProducto(_id):Observable<any>{
+  
+      let metodo:string = "deleteProducto.php?id="+_id;
+      console.log(this.url+metodo)
+      return this.http.post(this.url+metodo,{id: _id});
+    }
+
     
 
 

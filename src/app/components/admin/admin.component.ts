@@ -54,6 +54,7 @@ export class AdminComponent implements OnInit {
       if(resp.Status_messaje = 'Productos encontrados')
       {
           this._products = resp.Data;
+          console.log(this._products)
       }
   });
   }
@@ -95,6 +96,20 @@ export class AdminComponent implements OnInit {
         console.log(resp)
       });
     }
+
+  eliminarProducto(){
+    console.log(this.rep.product.IdProducto)
+    let id = this.rep.product.IdProducto;
+    console.log(id)
+    this.prodService.deleteProducto(id)
+    .subscribe((resp)=>{
+      console.log(resp)
+    });
+  }
+
+  guardarProducto(producto){
+    this.rep.setProduct(producto);
+  }
 
 
   limpiaRep(){
