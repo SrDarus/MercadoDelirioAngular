@@ -5,7 +5,7 @@
         </h4>
 
         <ul class="list-group p-b-5">
-          <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getCategorias()" >
+          <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getTipoProductos()" >
             Categorias
           </li>
           <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getProductos()" >
@@ -17,7 +17,7 @@
         </ul>
   </nav>
 
-  <div *ngIf="divCategoria" class="col-sm-6 col-md-8 col-lg-9 no-margin">
+  <div *ngIf="divTipoProducto" class="col-sm-6 col-md-8 col-lg-9 no-margin">
           <div class="mandate col-md-12">
             <h1 class="text-center">Categorías</h1>
             <div class="cabecera b-t-r-5">
@@ -26,7 +26,7 @@
                 </select>-->
                 <input class="btnHeader m-l-5 b-r-5" type="text"  placeholder="Buscar">
                 <button
-                  (click)="nuevaCategoria()"
+                  (click)="nuevoTipoProducto()"
                   style="border:1px solid;"
                   class="btn btn-header m-t-5 m-l-10 m-b-15">
                   <i class="fas fa-plus-square"></i>
@@ -36,20 +36,23 @@
                   <table class="table table-sm table-bordered table-hover mt-3">
                       <thead>
                           <tr>
-                              <th>idCategoria</th>
+                              <th>Id</th>
                               <th>Nombre</th>
-                              <th>Descripcion</th>
-                              <th></th>
-                              <th></th>
+                              <th>Editar</th>
+                              <th>Eliminar</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let categoria of _categorias">
-                              <td>{{categoria.idCategoria}}</td>
-                              <td>{{categoria.nombre}}</td>
-                              <td>{{categoria.descripcion}}</td>
-                              <td><button style="cursor:pointer; width: 38px" (click)="sendCategoria(categoria)"><fa name="fas fa-edit"></fa></button></td>
-                              <td><button style="cursor:pointer" data-toggle="modal" data-target="#exampleModal"><fa name="fas fa-trash"></fa></button></td>
+                          <tr *ngFor="let categoria of tipoProductos">
+                              <td>{{categoria.IdTipoProducto}}</td>
+                              <td>{{categoria.Nombre}}</td>
+                              <td class="text-center">
+                                <button style="cursor:pointer; width: 38px" (click)="editarTipoProducto(categoria)"><fa name="fas fa-edit"></fa></button>
+                              </td>
+                              <td class="text-center">
+                                <button
+                                (click)="guardarTipoProducto(categoria)" style="cursor:pointer" data-toggle="modal" data-target="#modalEliminarTipoProducto"><fa name="fas fa-trash"></fa></button>
+                              </td>
                           </tr>
                       </tbody>
                   </table>
@@ -87,15 +90,15 @@
                   </thead>
                   <tbody>
                       <tr *ngFor="let product of _products">
-                          <td>{{product.idProducto}}</td>
-                          <td>{{product.nombre}}</td>
-                          <td>{{product.precio}}</td>
-                          <td>{{product.unidad}}</td>
-                          <td>{{product.tipoUnidad}}</td>
-                          <td>{{product.img}}</td>
-                          <td>{{product.idCategoria}}</td>
+                          <td>{{product.IdProducto}}</td>
+                          <td>{{product.Nombre}}</td>
+                          <td>{{product.Precio}}</td>
+                          <td>{{product.Unidad}}</td>
+                          <td>{{product.TipoUnidad}}</td>
+                          <td>{{product.Img}}</td>
+                          <td>{{product.IdTipoProducto}}</td>
                           <td><button style="cursor:pointer; width: 38px" (click)="sendProducto(product)"><i class="fas fa-edit"></i></button></td>
-                          <td><button style="cursor:pointer" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash"></i></button></td>
+                          <td><button style="cursor:pointer" data-toggle="modal" data-target="#modalEliminarTipoProducto"><i class="fas fa-trash"></i></button></td>
                       </tr>
                   </tbody>
               </table>
@@ -125,12 +128,14 @@
       </div>
 </div>
 </section>
+
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEliminarTipoProducto" tabindex="-1" role="dialog" aria-labelledby="modalEliminarTipoProductoLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Eliminar registro</h5>
+          <h5 class="modal-title" id="modalEliminarTipoProductoLabel">Eliminar registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -140,7 +145,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Eliminar</button>
+          <button type="button" class="btn btn-primary" (click)="eliminarTipoProducto()" data-dismiss="modal">Eliminar</button>
         </div>
       </div>
     </div>

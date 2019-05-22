@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Producto} from '../models/Producto';
-import { Categoria} from '../models/categoria';
+import { TipoProducto} from '../models/Tipo-producto';
 import { GlobalService } from './global.service';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class RepositoryService {
 
     constructor(public global:GlobalService){}
     private _carro:any[] = [];
-    private _categoria:Categoria = new Categoria(0,"",""); 
+    private _tipoProducto:TipoProducto = new TipoProducto(0,""); 
     private _product:Producto = new Producto(0,0,"","",0,0,"",""); 
     private _total:number = 0;
     private _admin:number = 0;
@@ -31,12 +31,14 @@ export class RepositoryService {
         this._product = product;
     }
 
-    setCategoria(categoria){
-      this._categoria = categoria
+    setTipoProducto(tipoProducto){
+        console.log("set", tipoProducto)
+      this._tipoProducto = tipoProducto
     }
     
-    get categoria(){
-        return this._categoria;
+    get tipoProducto(){
+        //console.log(this.tipoProducto)
+        return this._tipoProducto;
     }
 
     setAdmin(value){
@@ -56,7 +58,7 @@ export class RepositoryService {
     }
 
     get catetoria(){
-        return this._categoria;
+        return this._tipoProducto;
     }
 
     addItem(product, action){
@@ -118,17 +120,17 @@ export class RepositoryService {
         //let rep = this.rep.getCarro();
         for(let i = 0;i<this._carro.length;i++){
 
-            if(this._carro[i].idProducto==item.idProducto){
+            if(this._carro[i].IdProducto==item.IdProducto){
                 if(action=='r'){
-                    this._carro[i].cantidad = parseInt(this._carro[i].cantidad,10) - 1
+                    this._carro[i].Cantidad = parseInt(this._carro[i].Cantidad,10) - 1
                 }else{
-                    this._carro[i].cantidad = parseInt(this._carro[i].cantidad,10) +1
+                    this._carro[i].Cantidad = parseInt(this._carro[i].Cantidad,10) +1
                 }
-                if(this._carro[i].cantidad<1){
+                if(this._carro[i].Cantidad<1){
                     this._carro[i].cantidad = 0;
                 }
-                if(this._carro[i].cantidad<1){
-                    this._carro[i].cantidad = 0;
+                if(this._carro[i].Cantidad<1){
+                    this._carro[i].Cantidad = 0;
                 }
             }
         }
@@ -141,7 +143,7 @@ export class RepositoryService {
         this._total = 0
         if(this._carro.length>0){
             for(let i=0; i<this._carro.length; i++){
-                this._total += this._carro[i].cantidad  * this._carro[i].precio
+                this._total += this._carro[i].Cantidad  * this._carro[i].Precio
                 //console.log("_total", this._total);
             }
         }
@@ -149,13 +151,13 @@ export class RepositoryService {
     }
 
     limpiaRep(){
-        this._categoria  = new Categoria(0,"","");
+        this._tipoProducto  = new TipoProducto(0,"");
         this._product = new Producto(0,0,"","",0,0,"","");
     }
     cerrarSesion(){
         this._admin = 0;
         this._perfil = 0;
-        this._categoria  = new Categoria(0,"","");
+        this._tipoProducto  = new TipoProducto(0,"");
         this._product = new Producto(0,0,"","",0,0,"","");
     }
 

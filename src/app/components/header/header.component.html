@@ -24,7 +24,7 @@
         </li>
         <li  class="nav-item active">
         <button *ngIf="rep.perfil == 0" routerLink="/login" class="nav-link btn-success btn-block" ><i class="far fa-user"></i> Ingresar</button>
-        <button *ngIf="rep.perfil > 0" class="nav-link btn-success btn-block" data-toggle="modal" data-target="#exampleModal" ><i class="far fa-user"></i> Cerrar sesion</button>
+        <button *ngIf="rep.perfil > 0" class="nav-link btn-success btn-block" data-toggle="modal" data-target="#modalCerrarSesion" ><i class="far fa-user"></i> Cerrar sesion</button>
         </li>
       </ul>
     </div>
@@ -96,11 +96,11 @@
 
 
 <!-- Modal -->
-<div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalCerrarSesionLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="modalCerrarSesionLongTitle">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -163,7 +163,7 @@
   </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalCerrarSesion" tabindex="-1" role="dialog" aria-labelledby="modalCerrarSesionLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">

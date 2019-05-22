@@ -17,8 +17,8 @@ export class ProductService {
       return this.http.get<any>(this.url+metodo);
     }
 
-    getProducts(idCategoria):Observable<any>{
-      let metodo:string = "getProducts.php?idCategoria="+idCategoria;
+    getProducts(idTipoProducto):Observable<any>{
+      let metodo:string = "getProducts.php?idTipoProducto="+idTipoProducto;
       return this.http.get<any>(this.url+metodo);
     }
 

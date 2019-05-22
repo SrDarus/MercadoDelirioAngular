@@ -5,9 +5,9 @@
           Categor&iacute;as
         </h4>
 
-        <ul *ngFor="let categ of categorias" class="list-group p-b-5">
+        <ul *ngFor="let categ of tipoProductos" class="list-group p-b-5">
           <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getProducts(categ)">
-            {{categ.nombre}}
+            {{categ.Nombre}}
           </li>
         </ul>
   </nav>

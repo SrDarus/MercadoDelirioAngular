@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 //services
 import { RepositoryService } from '../../services/repository.service';
-import { CategoriaService } from '../../services/categoria.service';
+import { TipoProductoService } from '../../services/tipoProducto.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -12,37 +12,42 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  _categorias:any;
+  _tipoProductos:any;
   _products:any = null;
-  divCategoria:boolean=true;
+  divTipoProducto:boolean=true;
   divProducto:boolean = false;
   divReporte:boolean = false;
   reporte:any={totalVentas:162500, productoMasVendido: "Lechuga"};
   fechaReporte = "02/05/2019";
   constructor( private rep: RepositoryService,
-    private categoriaService: CategoriaService, 
+    private tipoProdService: TipoProductoService, 
     private prodService: ProductService,
     public cd: ChangeDetectorRef,
     private router: Router) { }
 
   ngOnInit() {
-    this.getCategorias();
+    this.getTipoProductos();
   }
 
-  getCategorias(){
-    this.divCategoria = true;
+  getTipoProductos(){
+    this.divTipoProducto = true;
     this.divProducto = false;
     this.divReporte = false;
-    this.categoriaService.getCategorias().subscribe((resp)=>{
-      if(resp.Status_messaje = 'Categorias encontradas')
+    this.tipoProdService.getTipoProductos().subscribe((resp)=>{
+      if(resp.Status_messaje = 'tipoProductos encontradas')
       {
-      this._categorias = resp.Data;
+        this._tipoProductos = resp.Data;
+        //console.log("this._tipoProductos",this._tipoProductos)
       }
-  });
+    });
+  }
+
+  get tipoProductos(){
+    return this._tipoProductos;
   }
 
   getProductos(){
-    this.divCategoria = false;
+    this.divTipoProducto = false;
     this.divProducto = true;
     this.divReporte = false;
     this.prodService.getAllProducts().subscribe((resp)=>{
@@ -54,14 +59,21 @@ export class AdminComponent implements OnInit {
   }
 
   getReporte(){
-    this.divCategoria = false;
+    this.divTipoProducto = false;
     this.divProducto = false;
     this.divReporte = true;
   }
 
-  sendCategoria(categoria){
-    this.rep.setCategoria(categoria)
-    this.router.navigate(['/categorias'])
+  guardarTipoProducto(tipoProducto){
+    console.log(tipoProducto)
+    this.rep.setTipoProducto(tipoProducto);
+  }
+
+  editarTipoProducto(tipoProducto){
+    tipoProducto.action = 1
+    console.log(tipoProducto)
+    this.rep.setTipoProducto(tipoProducto)
+    this.router.navigate(['/tipoProductos'])
   }
 
   sendProducto(objeto){
@@ -69,11 +81,20 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['/productos'])
   }
   
-  nuevaCategoria(){
-    let categoria = {idCategoria:0,nombre:'',descripcion:''};
-    this.rep.setCategoria(categoria);
-    this.router.navigate(['/categorias']);
+  nuevoTipoProducto(){
+    let tipoProducto = {IdTipoProducto:0,Nombre:''};
+    this.rep.setTipoProducto(tipoProducto);
+    this.router.navigate(['/tipoProductos']);
   }
+
+  eliminarTipoProducto(){
+      let id = this.rep.tipoProducto.IdTipoProducto;
+      console.log(id)
+      this.tipoProdService.deleteTipoProducto(id)
+      .subscribe((resp)=>{
+        console.log(resp)
+      });
+    }
 
 
   limpiaRep(){

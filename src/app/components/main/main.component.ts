@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { RepositoryService } from '../../services/repository.service';
-import { CategoriaService } from '../../services/categoria.service';
+import { TipoProductoService } from '../../services/tipoProducto.service';
 import { ProductService } from '../../services/product.service';
 import { GlobalService } from '../../services/global.service';
 
@@ -15,7 +15,7 @@ import { GlobalService } from '../../services/global.service';
 })
 export class MainComponent implements OnInit {
 
-    _categorias:any=null;
+    _tipoProductos:any=null;
     _listProducts:any = null; 
     _products:any[] = [];
 
@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
 	rangeModel:any[]=[0,100];
 
     constructor( private rep: RepositoryService,  
-    	private categService: CategoriaService,
+    	private tipoProdService: TipoProductoService,
     	private prodService: ProductService,
         public global: GlobalService, 
 		public cd: ChangeDetectorRef,
@@ -44,11 +44,11 @@ export class MainComponent implements OnInit {
         this.rep.activeCartNotify = false;
 
 
-	    this.categService.getCategorias().subscribe((resp)=>{
-            if(resp.Status_messaje = 'Categorias encontradas')
+	    this.tipoProdService.getTipoProductos().subscribe((resp)=>{
+            if(resp.Status_messaje = 'tipoProductos encontradas')
             {
-	    	    this._categorias = resp.Data;
-                //console.log(this._categorias);
+	    	    this._tipoProductos = resp.Data;
+                //console.log(this._tipoProductos);
             }
 
 	    	//console.log("this.filteredProducts", this.filteredProducts)
@@ -63,11 +63,11 @@ export class MainComponent implements OnInit {
             if(resp.Status_messaje = 'Productos encontrados')
             {
                 this._listProducts = resp.Data;
-                console.log("this._listProducts", this._listProducts)
+                //console.log("this._listProducts", this._listProducts)
                 for(let i = 0;i<this._listProducts.length; i++){
                     let urlImg = 'assets/images/products/'+this._listProducts[i].Img
                     this._listProducts[i].Img = urlImg
-                    console.log(this._listProducts[0].Img);
+                    //console.log(this._listProducts[0].Img);
                 }
             }
 
@@ -86,8 +86,8 @@ export class MainComponent implements OnInit {
         return this._listProducts;
     }
 
-    get categorias(){
-        return this._categorias;
+    get tipoProductos(){
+        return this._tipoProductos;
     }
 
 
@@ -100,9 +100,10 @@ export class MainComponent implements OnInit {
         }
         //this.router.navigate(['/carro']);
     }
+
     getProducts(prod){
         //console.log(prod)
-        this.prodService.getProducts(prod.idCategoria).subscribe((resp)=>{
+        this.prodService.getProducts(prod.IdTipoProducto).subscribe((resp)=>{
             
             this._listProducts = resp.Data;
             for(let i = 0;i<this._listProducts.length; i++){
@@ -150,18 +151,18 @@ export class MainComponent implements OnInit {
         if(carro.length>0){
             let exist=false;
             for(let i =0; i<carro.length; i++){
-                if(carro[i].idProducto==product.idProducto){
+                if(carro[i].IdTipoProducto==product.IdTipoProducto){
                   this.rep.changeItem(product)
                   exist = true;
                 }
             }
             if(!exist){
                 let newProduct  = {
-                    idProducto: product.idProducto,
-                    nombre:product.nombre,
+                    IdProducto: product.IdProducto,
+                    Nombre:product.Nombre,
                     Img: product.Img,
-                    precio: product.precio,
-                    cantidad: 1
+                    Precio: product.Precio,
+                    Cantidad: 1
                 }
                 this.rep.addItem(newProduct, 0)
             }
@@ -169,11 +170,11 @@ export class MainComponent implements OnInit {
 
         }else{
             let newProduct  = {
-                idProducto: product.idProducto,
-                nombre:product.nombre,
+                IdProducto: product.IdProducto,
+                Nombre:product.Nombre,
                 Img: product.Img,
-                precio: product.precio,
-                cantidad: 1
+                Precio: product.Precio,
+                Cantidad: 1
             } 
             this.rep.addItem(newProduct, 0)
         }

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             this.rep.setAdmin(1)
           }
           this.rep.setPerfil(resp.Data.IdPerfil)
-          this.route.navigate(['/main'])
+          this.route.navigate(['/admin'])
         }else{
           alert("usuario o password incorrecto")
         }

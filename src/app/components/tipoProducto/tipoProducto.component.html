@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Categorías</h3>
+      <span *ngIf="actionAviso" class="small text-danger tet-center">{{txtAviso}}</span>
+    </div>
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Id Tipo de Producto</label>
+          <input type="text" [(ngModel)]="tipoProducto.IdTipoProducto"  class="form-control" id="exampleFormControlInput1" disabled>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Nombre</label>
+          <input type="text" [(ngModel)]= "tipoProducto.Nombre" id="exampleFormControlInput1" class="form-control bo1"  placeholder="Ingrese un nombre">
+        </div>
+        <div class="form-group">
+          <button type="button"  class="form-control btn btn-block btn-outline-dark" id="exampleFormControlInput1" (click)="grabarTipoProducto()">Grabar</button>
+        </div>
+    </div>  
+  </div>
+</div>  

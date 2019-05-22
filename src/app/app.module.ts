@@ -7,17 +7,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //COMPONENTS
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ProductosComponent } from './components/productos/productos.component';
+import { TipoProductoComponent } from './components/tipoProducto/tipoProducto.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CarroComponent } from './components/carro/carro.component';
 //SERVICES
 import { RepositoryService } from './services/repository.service';
-import { ProductosComponent } from './components/productos/productos.component';
+import { TipoProductoService } from './services/tipoProducto.service';
 import { ProductService } from './services/product.service';
-import { CategoriaService } from './services/categoria.service';
+import { GenericoService } from './services/generico.service';
 import { GlobalService } from './services/global.service';
-import { LoginComponent } from './components/login/login.component';
 
 //LIBRERIAS
 import { NouisliderModule } from 'ng2-nouislider';
@@ -25,9 +28,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { PurchaseConfirmationSpanishComponent } from './components/purchase-confirmation/purchase-confirmation-spanish/purchase-confirmation-spanish.component';
 import { PurchaseConfirmationEnglishComponent } from './components/purchase-confirmation/purchase-confirmation-english/purchase-confirmation-english.component';
 import { PurchaseConfirmationPortugueseComponent } from './components/purchase-confirmation/purchase-confirmation-portuguese/purchase-confirmation-portuguese.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { CategoriasComponent } from './components/categorias/categorias.component';
-import { GenericoService } from './services/generico.service';
 
 
 const appRoutes: Routes = [
@@ -37,10 +37,10 @@ const appRoutes: Routes = [
   { path: 'detail',      component: ProductDetailComponent },
   { path: 'carro',      component: CarroComponent },
   { path: 'admin',      component: AdminComponent },
-  { path: 'categorias',      component: CategoriasComponent },
+  { path: 'tipoProductos',      component: TipoProductoComponent },
   { path: 'productos',      component: ProductosComponent },
   { path: '',
-    redirectTo: '/main',
+    redirectTo: '/tipoProductos',
     pathMatch: 'full'
   },
   { path: '**', component: MainComponent }
@@ -58,7 +58,7 @@ const appRoutes: Routes = [
     PurchaseConfirmationEnglishComponent,
     PurchaseConfirmationPortugueseComponent,
     AdminComponent,
-    CategoriasComponent,
+    TipoProductoComponent,
     ProductosComponent
   ],
   imports: [
@@ -74,7 +74,7 @@ const appRoutes: Routes = [
     RepositoryService,
     GenericoService,
     ProductService,
-    CategoriaService,
+    TipoProductoService,
     GlobalService,
     DatePipe
   ],

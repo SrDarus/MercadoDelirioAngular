@@ -1,26 +1,26 @@
 export class Producto {
 
-	idMaeEmpresaGrupo:number;
-	idProdSubTipoProducto:number;
-	nombre:string;
-	zona: string;
-	montoAdulto: number;
-	montoChild: number
-	img1: string;
-	img2: string;
+	IdMaeEmpresaGrupo:number;
+	IdProdSubTipoProducto:number;
+	Nombre:string;
+	Zona: string;
+	MontoAdulto: number;
+	MontoChild: number
+	Img1: string;
+	Img2: string;
 	
-	descripcion: string;
-	fecha: string;
+	Descripcion: string;
+	Fecha: string;
 
 	constructor (idMaeEmpresaGrupo, idProdSubTipoProducto, nombre, zona, montoAdulto, montoChild, img1, img2){
 
-		this.idMaeEmpresaGrupo = idMaeEmpresaGrupo;
-		this.idProdSubTipoProducto = idProdSubTipoProducto;
-		this.nombre = nombre;
-		this.zona = zona;
-		this.montoAdulto = montoAdulto;
-		this.montoChild = montoChild
-		this.img1 = img1;
-		this.img2 = img2;
+		this.IdMaeEmpresaGrupo = idMaeEmpresaGrupo;
+		this.IdProdSubTipoProducto = idProdSubTipoProducto;
+		this.Nombre = nombre;
+		this.Zona = zona;
+		this.MontoAdulto = montoAdulto;
+		this.MontoChild = montoChild
+		this.Img1 = img1;
+		this.Img2 = img2;
 	}	
 }
