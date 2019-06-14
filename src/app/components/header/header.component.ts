@@ -54,5 +54,10 @@ export class HeaderComponent implements OnInit {
         this.rep.cerrarSesion();
         this.router.navigate(['/main'])
     }
+
+    cerrarModalCarro(){
+        document.getElementById('btnCerrarModalCarro').click();
+        this.router.navigate(['/carro']);
+    }
     
 }

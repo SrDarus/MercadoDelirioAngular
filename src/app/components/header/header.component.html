@@ -98,10 +98,10 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalCerrarSesionLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content text-center">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalCerrarSesionLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="modalCerrarSesionLongTitle">Carro</h5>
+        <button id="btnCerrarModalCarro" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -124,14 +124,14 @@
                     <button class="btn btn-secondary" (click)="rep.changeCantidad(item, 'r')">
                       <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
                     </button>
-                    <input class="size8 m-text18 t-center num-product d-inline" type="number" min="0" name="num-product1" [(ngModel)]="item.cantidad">
+                    <input class="size8 m-text18 t-center num-product d-inline" type="number" min="0" name="num-product1" [(ngModel)]="item.Cantidad">
                     <button class="btn btn-secondary" (click)="rep.changeCantidad(item, 's')">
                       <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
                     </button>
                   </div>
                   <div class="col-2 m-auto"><b>{{item.Precio | number}}</b>
                   </div>
-                  <div class="col-2 m-auto">  <b>{{item.Cantidad*item.Precio | number}}</b>
+                  <div class="col-2 m-auto"> <b>{{item.Cantidad*item.Precio | number}}</b>
                   </div>
                   <div class="col-1 m-auto">
                     <fa class="fa-2x hov-pointer" name="trash" (click)="deleteItem(item)"></fa>
@@ -144,9 +144,9 @@
             </div>
             <div class="header-cart-buttons">
               <div class="header-cart-wrapbtn">
-                <a [routerLink]="'/carro'" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                <button class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" (click)="cerrarModalCarro()">
                   Ir al carro
-                </a>
+                </button>
               </div>
 
               <div class="header-cart-wrapbtn">
@@ -155,14 +155,14 @@
                 </a>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Modal -->
+
+<!-- Modal Cerrar Session -->
 <div  class="modal fade" id="modalCerrarSesion" tabindex="-1" role="dialog" aria-labelledby="modalCerrarSesionLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

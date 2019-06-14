@@ -159,7 +159,8 @@ export class MainComponent implements OnInit {
         if(carro.length>0){
             let exist=false;
             for(let i =0; i<carro.length; i++){
-                if(carro[i].IdTipoProducto==product.IdTipoProducto){
+
+                if(carro[i].IdProducto==product.IdProducto){
                   this.rep.changeItem(product)
                   exist = true;
                 }
@@ -211,5 +212,7 @@ export class MainComponent implements OnInit {
         //this.router.navigate(['/carro']);
 
     }
+
+
 
 }

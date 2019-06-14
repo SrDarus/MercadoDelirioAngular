@@ -66,7 +66,7 @@ export class RepositoryService {
             this._carro.push(product)
         }else{
             let i = this._carro.indexOf(product);
-            this._carro[i].cantidad +=1
+            this._carro[i].Cantidad +=1
         }
         this.global.countProduct = this._carro.length
         //this.calcular_Total()
@@ -79,8 +79,8 @@ export class RepositoryService {
         for(let i=0;i<this._carro.length;i++){
             //let idNewItem = item.idProdSubTipoProducto+item.fecha+item.jornada
             //let idItemCarro = this._carro[i].idProdSubTipoProducto+this.carro[i].fecha+this.carro[i].jornada
-            if(item.idProducto==this._carro[i].idProducto){
-                this._carro[i].cantidad +=1;
+            if(item.IdProducto==this._carro[i].IdProducto){
+                this._carro[i].Cantidad +=1;
             }
         }
         this.calcularTotal()
@@ -100,11 +100,11 @@ export class RepositoryService {
         let i = this._carro.indexOf(product);
         switch(action) {
             case 's':
-                this._carro[i].cantidad +=1
+                this._carro[i].Cantidad +=1
                 break;
             case 'r':
-                this._carro[i].cantidad -=1
-                if(this._carro[i].cantidad <0){this._carro[i].cantidad=0}
+                this._carro[i].Cantidad -=1
+                if(this._carro[i].Cantidad <0){this._carro[i].Cantidad=0}
                 break;
             default:
                 return false
@@ -127,7 +127,7 @@ export class RepositoryService {
                     this._carro[i].Cantidad = parseInt(this._carro[i].Cantidad,10) +1
                 }
                 if(this._carro[i].Cantidad<1){
-                    this._carro[i].cantidad = 0;
+                    this._carro[i].Cantidad = 0;
                 }
                 if(this._carro[i].Cantidad<1){
                     this._carro[i].Cantidad = 0;
