@@ -40,7 +40,7 @@ const appRoutes: Routes = [
   { path: 'tipoProductos',      component: TipoProductoComponent },
   { path: 'productos',      component: ProductosComponent },
   { path: '',
-    redirectTo: '/tipoProductos',
+    redirectTo: '/main',
     pathMatch: 'full'
   },
   { path: '**', component: MainComponent }

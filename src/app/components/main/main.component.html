@@ -6,7 +6,7 @@
         </h4>
 
         <ul *ngFor="let categ of tipoProductos" class="list-group p-b-5">
-          <li class="list-group-item p-t-4" style="cursor: pointer;" (click)="getProducts(categ)">
+          <li [@btnsCategoria]="stateBtnsCat" class="list-group-item list-group-item-success p-t-4" (click)="getProducts(categ)">
             {{categ.Nombre}}
           </li>
         </ul>
@@ -65,9 +65,9 @@
 
                   <div class="block2-btn-addcart w-size1 trans-0-4">
                     <!-- Button -->
-                    <a routerLink="" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" (click)="addItem(product)">
-                      Agregar al carro
-                    </a>
+                    <button id="addToCar" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" (click)="addItem(product)">
+                      Agregar al Carro
+                    </button>
                   </div>
                 </div>
               </div>

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     login(){
       this.genericoService.login(this.txtUsuario, this.txtPassword).subscribe((resp)=>{
         console.log(resp)
-        if(resp.Status_messaje==='Usuario encontrado'){
+        if(resp.Status_messaje===0){
           this._usuario = resp.Data;
           sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
           console.log(resp.Data)

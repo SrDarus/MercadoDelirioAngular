@@ -8,10 +8,16 @@ import { GlobalService } from '../../services/global.service';
 //LIBRERIAS
 //import { NouisliderModule } from 'ng2-nouislider';
 
+//animations
+import { btnsCategoria } from '../../animations/btnsCategorias';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
+  animations: [
+      btnsCategoria
+  ]
 })
 export class MainComponent implements OnInit {
 
@@ -25,9 +31,11 @@ export class MainComponent implements OnInit {
     //zonas:string[] = [];
     //zonaSelected:string;
 
-    min:number=0;
-    max:number=1000000;
-	rangeModel:any[]=[0,100];
+    //min:number=0;
+    //max:number=1000000;
+	//rangeModel:any[]=[0,100];
+
+    stateBtnsCat:string;
 
     constructor( private rep: RepositoryService,  
     	private tipoProdService: TipoProductoService,
@@ -41,8 +49,8 @@ export class MainComponent implements OnInit {
     ngOnInit() { 
         //Hay que parametrizar
         //this.rep.admin
+        this.stateBtnsCat = 'inactivo'
         this.rep.activeCartNotify = false;
-
 
 	    this.tipoProdService.getTipoProductos().subscribe((resp)=>{
             if(resp.Status_messaje = 'tipoProductos encontradas')
