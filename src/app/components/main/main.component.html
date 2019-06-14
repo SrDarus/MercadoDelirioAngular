@@ -1,21 +1,21 @@
 
 <section class="row no-margin m-t-5">
-  <nav class="col-sm-6 col-md-4 col-lg-3 text-center"  style="border: 1px black solid;">
+  <nav class="col-sm-6 col-md-4 col-lg-3 text-center">
         <h4 class="m-text14 m-t-5 p-b-7">
           Categor&iacute;as
         </h4>
 
         <ul *ngFor="let categ of tipoProductos" class="list-group p-b-5">
-          <li [@btnsCategoria]="stateBtnsCat" class="list-group-item list-group-item-success p-t-4" (click)="getProducts(categ)">
+          <button id="liCategoria" [@btnsCategoria]="stateBtnsCat" class="list-group-item list-group-item-success p-t-4" (click)="getProducts(categ)">
             {{categ.Nombre}}
-          </li>
+          </button>
         </ul>
   </nav>
   
   <div class="col-sm-6 col-md-8 col-lg-9 no-margin">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-          <article style="border:1px black solid;" >
+          <article>
               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -48,7 +48,7 @@
  
 
     
-    <article class="text-center" style="border: 1px blue solid">
+    <article class="text-center">
       <!-- Products -->
       <div class="row">
         <div  *ngFor="let product of products" class="col-sm-12 col-md-6 col-lg-4 p-b-50">

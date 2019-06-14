@@ -35,3 +35,18 @@
     background: url('/assets/images/contrasticon.png');
     cursor: pointer;
 }
+
+#liCategoria:focus{
+
+    -ms-transform: scaleX(1.1); /* IE 9 */
+    -webkit-transform: scaleX(1.1); /* Safari 3-8 */
+    transform: scaleX(1.1);
+    
+    background-color: #236947;
+    color: #ffffff;
+    -webkit-transition:  1s; /* For Safari 3.1 to 6.0 */
+    transition: 1s;
+
+
+
+}
