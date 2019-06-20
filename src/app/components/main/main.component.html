@@ -6,7 +6,7 @@
         </h4>
 
         <ul *ngFor="let categ of tipoProductos" class="list-group p-b-5">
-          <button id="liCategoria" [@btnsCategoria]="stateBtnsCat" class="list-group-item list-group-item-success p-t-4" (click)="getProducts(categ)">
+          <button id="liCategoria" @btnsCategoria class="list-group-item list-group-item-success p-t-4" (click)="getProducts(categ)">
             {{categ.Nombre}}
           </button>
         </ul>
@@ -53,7 +53,7 @@
       <div class="row">
         <div  *ngFor="let product of products" class="col-sm-12 col-md-6 col-lg-4 p-b-50">
             <!-- Block2 -->
-            <div class="block2">
+            <div @btnsCategoria class="block2">
               <div class="block2-img wrap-pic-w of-hidden pos-relative">
                 <img src="{{product.Img}}" alt="IMG-PRODUCT">
 

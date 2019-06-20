@@ -9,14 +9,14 @@ import {
       state('inactivo', style({
       						cursor:'pointer'
       					})),
-      state('activo', style({
-
-      					})),
+      //state('activo', style({
+//
+      //					})),
       transition(':enter', [
         style({
           opacity: 0
         }),
-        animate(1300)
+        animate(900)
 
       ])
     ])
