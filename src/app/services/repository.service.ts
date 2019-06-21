@@ -13,6 +13,7 @@ export class RepositoryService {
     private _total:number = 0;
     private _admin:number = 0;
     private _perfil:number = 0;
+    private _user:any;
     activeCartNotify:boolean = false;
     //contador:number = 0;
     get product(){
@@ -25,6 +26,13 @@ export class RepositoryService {
 
     get total(){
         return this._total;
+    }
+
+    get user(){
+        return this._user;
+    }
+    setUser(user){
+        this._user = user;
     }
 
     setProduct(product){

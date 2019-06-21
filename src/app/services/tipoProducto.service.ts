@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class TipoProductoService {
 
   //url:string = "http://localhost/apis/MercadoDelirioApi/controller/";
-  url:string = "http://localhost:8080/apis/MercadoDelirioApi/controller/";
+  url:string = "http://localhost/apis/MercadoDelirioApi/controller/";
   //url:string = "http://localhost:65108/api/Conserjes/";
 
   constructor( private http: HttpClient) { }
