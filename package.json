@@ -27,7 +27,7 @@
     "core-js": "^2.4.1",
     "daterangepicker": "^3.0.3",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "ng2-nouislider": "^1.6.2",
     "noui": "0.0.1",
     "nouislider": "^12.0.0",
